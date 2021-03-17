@@ -16,7 +16,7 @@ export const InnerContainer = styled.div`
   background-color: ${({ theme }) => theme.secondBackground};
 
   &:hover {
-    border: 1px solid #7c5dfa;
+    border: 1px solid ${({ theme }) => theme.primaryButton};
     margin-top: -2px;
   }
 `;

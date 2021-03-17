@@ -6,6 +6,7 @@ import { db } from "../../firebase";
 
 import AstronautPreview from "../AstronautPreview/AstronautPreview";
 import EditAstronaut from "../EditAstronaut/EditAstronaut";
+import Button from "../UI/Button";
 
 export default function MainPage() {
   const [createDialogActive, setCreateDialogActive] = useState<boolean>(false);
@@ -23,12 +24,21 @@ export default function MainPage() {
         />
       )}
 
-      <S.AstronautsContainer>
+      <S.OptionBarContainer>
         {status !== "saving" ? (
-          <button onClick={() => setCreateDialogActive(true)}>Add</button>
+          <Button
+            type="button"
+            variant="primary"
+            onClick={() => setCreateDialogActive(true)}
+          >
+            Add
+          </Button>
         ) : (
           <div>Saving</div>
         )}
+      </S.OptionBarContainer>
+
+      <S.AstronautsContainer>
         <S.AstronautsLabelContainer>
           <span>Name</span>
           <span>Surname</span>

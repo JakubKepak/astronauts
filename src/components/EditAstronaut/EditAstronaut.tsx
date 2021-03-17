@@ -95,7 +95,7 @@ export default function EditAstronaut({
               <CustomTextField
                 id="birthDate"
                 name="birthDate"
-                type="text"
+                type="date"
                 label="birthDate"
                 value={props.values.birthDate}
               />

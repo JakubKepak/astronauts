@@ -59,7 +59,10 @@ export default function useFetch(query: any) {
     dispatch({ type: "saving" });
 
     try {
-      const res = await query.add(payload);
+      const res = await query.add({
+        ...payload,
+        dateCreated: new Date(Date.now()),
+      });
       console.log(res.id);
       dispatch({ type: "saved" });
     } catch (err) {
@@ -79,7 +82,9 @@ export default function useFetch(query: any) {
 
   const editItem = async (docId: any, payload: Payload) => {
     try {
-      await query.doc(docId).update(payload);
+      await query
+        .doc(docId)
+        .update({ ...payload, ...{ lastUpdated: new Date(Date.now()) } });
       dispatch({ type: "saved" });
     } catch (err) {
       dispatch({ type: "error", payload: err });
