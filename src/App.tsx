@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* misc */
     --borderRadius: 5px;
+    --Shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
   }
 
   *,
@@ -41,6 +42,7 @@ a:visited {
   
   body {
   background-color: ${({ theme }) => theme.mainBackground};
+  font-family: 'Montserrat', sans-serif;
   }
 `;
 

@@ -1,16 +1,22 @@
-import { useFormik, Formik, Form, Field, FieldArray, useField } from "formik";
+import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import * as S from "./Styles";
+
+import Button from "../UI/Button";
 
 const CustomTextField = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
 
   return (
-    <div>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input error={meta.error} {...field} {...props} />
-      {meta.touched && meta.error ? <div>{meta.error}</div> : null}
-    </div>
+    <S.InputFieldContainer>
+      <S.InputLabelContainer>
+        <S.Label htmlFor={props.id || props.name}>{label}</S.Label>
+        {meta.touched && meta.error ? (
+          <S.ErrorMessage>{meta.error}</S.ErrorMessage>
+        ) : null}
+      </S.InputLabelContainer>
+      <S.InputField error={meta.error} {...field} {...props} />
+    </S.InputFieldContainer>
   );
 };
 
@@ -29,6 +35,7 @@ interface Props {
   superpower?: string;
   setEditDialogActive: any;
   saveItem: any;
+  id?: string;
 }
 
 export default function EditAstronaut({
@@ -39,31 +46,33 @@ export default function EditAstronaut({
   superpower = "",
   setEditDialogActive,
   saveItem,
+  id = "",
 }: Props) {
   return (
     <S.MainContainer>
       <S.DialogContainer>
+        <S.DialogHeader>
+          {variant === "new" && <span>Add a new Astronaut</span>}
+          {variant === "edit" && <span>Edit Astronaut</span>}
+        </S.DialogHeader>
         <Formik
           initialValues={{
-            name: "",
-            surname: "",
-            birthDate: "",
-            superpower: "",
+            name: name || "",
+            surname: surname || "",
+            birthDate: birthDate || "",
+            superpower: superpower || "",
           }}
           validationSchema={EditSchema}
           onSubmit={(values, actions) => {
             if (variant === "new") {
-              setTimeout(() => {
-                alert(`creating - ${JSON.stringify(values, null, 2)}`);
-                actions.setSubmitting(false);
-                saveItem(values);
-              }, 1000);
+              alert(`creating - ${JSON.stringify(values, null, 2)}`);
+              actions.setSubmitting(false);
+              saveItem(values);
             }
             if (variant === "edit") {
-              setTimeout(() => {
-                alert(`editing - ${JSON.stringify(values, null, 2)}`);
-                actions.setSubmitting(false);
-              }, 1000);
+              alert(`editing - ${JSON.stringify(values, null, 2)}`);
+              actions.setSubmitting(false);
+              saveItem(id, values);
             }
           }}
         >
@@ -97,10 +106,18 @@ export default function EditAstronaut({
                 label="superpower"
                 value={props.values.superpower}
               />
-              <button type="submit">Add item</button>
-              <button type="button" onClick={() => setEditDialogActive(false)}>
-                Close
-              </button>
+              <S.ButtonsContainer>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={() => setEditDialogActive(false)}
+                >
+                  aa, Drop it
+                </Button>
+                <Button type="submit" variant="primary">
+                  Save & Close
+                </Button>
+              </S.ButtonsContainer>
             </Form>
           )}
         </Formik>

@@ -79,9 +79,7 @@ export default function useFetch(query: any) {
 
   const editItem = async (docId: any, payload: Payload) => {
     try {
-      await query.doc(docId).set({
-        payload,
-      });
+      await query.doc(docId).update(payload);
       dispatch({ type: "saved" });
     } catch (err) {
       dispatch({ type: "error", payload: err });

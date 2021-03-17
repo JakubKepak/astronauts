@@ -8,16 +8,16 @@ import AstronautPreview from "../AstronautPreview/AstronautPreview";
 import EditAstronaut from "../EditAstronaut/EditAstronaut";
 
 export default function MainPage() {
-  const [editDialogActive, setEditDialogActive] = useState<boolean>(false);
+  const [createDialogActive, setCreateDialogActive] = useState<boolean>(false);
   const [data, status, error, saveItem, deleteItem, editItem] = useFetch(
     db.collection("astronauts")
   );
 
   return (
     <S.MainContainer>
-      {editDialogActive && (
+      {createDialogActive && (
         <EditAstronaut
-          setEditDialogActive={setEditDialogActive}
+          setEditDialogActive={setCreateDialogActive}
           saveItem={saveItem}
           variant="new"
         />
@@ -25,19 +25,7 @@ export default function MainPage() {
 
       <S.AstronautsContainer>
         {status !== "saving" ? (
-          <button
-            onClick={() => setEditDialogActive(true)}
-            // onClick={() =>
-            //   saveItem({
-            //     name: "Jarda",
-            //     surname: "Button",
-            //     birthDate: "23/1/1990",
-            //     superpower: "Cat",
-            //   })
-            // }
-          >
-            Add
-          </button>
+          <button onClick={() => setCreateDialogActive(true)}>Add</button>
         ) : (
           <div>Saving</div>
         )}
@@ -51,6 +39,9 @@ export default function MainPage() {
                 editItem={editItem}
                 key={astronaut.id}
                 name={astronaut.name}
+                surname={astronaut.surname}
+                birthDate={astronaut.birthDate}
+                superpower={astronaut.superpower}
               />
             );
           })}

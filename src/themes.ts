@@ -5,7 +5,13 @@ export const LightTheme: DefaultTheme = {
   secondBackground: "#ffffff",
   textColorPrimary: "black",
   textColorLight: "#DFE3FA",
+  textColorWhite: "#ffffff",
   warningColor: "#EC5757",
+  primaryButton: "#4da0ff",
+  primaryButtonHover: "#7ab8ff",
+  secondaryButton: "#e0e0e0",
+  secondaryButtonHover: "#bfbfbf",
+  textColorWarn: "#ff4a4a",
 };
 
 export const DarkTheme: DefaultTheme = {
@@ -13,5 +19,11 @@ export const DarkTheme: DefaultTheme = {
   secondBackground: "#ffffff",
   textColorPrimary: "black",
   textColorLight: "#DFE3FA",
+  textColorWhite: "#ffffff",
   warningColor: "#EC5757",
+  primaryButton: "#4da0ff",
+  primaryButtonHover: "#7ab8ff",
+  secondaryButton: "#e0e0e0",
+  secondaryButtonHover: "#bfbfbf",
+  textColorWarn: "#ff4a4a",
 };
