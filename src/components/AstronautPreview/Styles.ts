@@ -24,3 +24,13 @@ export const TrashBinIcon = styled(FontAwesomeIcon)`
     color: ${({ theme }) => theme.warningColor};
   }
 `;
+
+export const EditIcon = styled(FontAwesomeIcon)`
+  color: ${({ theme }) => theme.textColorLight};
+  transition: all 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.warningColor};
+  }
+`;

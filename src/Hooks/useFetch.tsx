@@ -77,7 +77,25 @@ export default function useFetch(query: any) {
     }
   };
 
-  return [state.data, state.status, state.error, saveItem, deleteItem];
+  const editItem = async (docId: any, payload: Payload) => {
+    try {
+      await query.doc(docId).set({
+        payload,
+      });
+      dispatch({ type: "saved" });
+    } catch (err) {
+      dispatch({ type: "error", payload: err });
+    }
+  };
+
+  return [
+    state.data,
+    state.status,
+    state.error,
+    saveItem,
+    deleteItem,
+    editItem,
+  ];
 }
 
 // Get doc data and merge doc.id
