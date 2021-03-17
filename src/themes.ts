@@ -11,6 +11,8 @@ export const LightTheme: DefaultTheme = {
   primaryButtonHover: "#7ab8ff",
   secondaryButton: "#e0e0e0",
   secondaryButtonHover: "#bfbfbf",
+  warnButton: "#EC5757",
+  warnButtonHover: "#ff7070",
   textColorWarn: "#ff4a4a",
 };
 
@@ -25,5 +27,7 @@ export const DarkTheme: DefaultTheme = {
   primaryButtonHover: "#7ab8ff",
   secondaryButton: "#e0e0e0",
   secondaryButtonHover: "#bfbfbf",
+  warnButton: "#EC5757",
+  warnButtonHover: "#ff7070",
   textColorWarn: "#ff4a4a",
 };

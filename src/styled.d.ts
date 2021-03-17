@@ -12,6 +12,8 @@ declare module "styled-components" {
     primaryButtonHover: string;
     secondaryButton: string;
     secondaryButtonHover: string;
+    warnButton: string;
+    warnButtonHover: string;
     textColorWarn: string;
   }
 }

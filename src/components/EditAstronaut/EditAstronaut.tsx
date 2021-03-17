@@ -112,7 +112,7 @@ export default function EditAstronaut({
                   variant="secondary"
                   onClick={() => setEditDialogActive(false)}
                 >
-                  aa, Drop it
+                  Drop it
                 </Button>
                 <Button type="submit" variant="primary">
                   Save & Close

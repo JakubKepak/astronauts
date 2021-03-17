@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const MainComponent = styled.div`
+export const MainContainer = styled.div`
+  display: flex;
+`;
+
+export const InnerContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
   padding: 1rem;
   width: 100%;
   min-width: 300px;
@@ -15,13 +21,21 @@ export const MainComponent = styled.div`
   }
 `;
 
+export const OptionButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+  margin-left: 0.2rem;
+`;
+
 export const TrashBinIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.textColorLight};
   transition: all 0.2s;
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.warningColor};
+    color: ${({ theme }) => theme.textColorWarn};
   }
 `;
 
@@ -31,6 +45,6 @@ export const EditIcon = styled(FontAwesomeIcon)`
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.warningColor};
+    color: ${({ theme }) => theme.textColorPrimary};
   }
 `;

@@ -29,6 +29,12 @@ export default function MainPage() {
         ) : (
           <div>Saving</div>
         )}
+        <S.AstronautsLabelContainer>
+          <span>Name</span>
+          <span>Surname</span>
+          <span>Date of birth</span>
+          <span>Superpower</span>
+        </S.AstronautsLabelContainer>
         {status === "success" &&
           data.length > 0 &&
           data.map((astronaut: any) => {

@@ -38,11 +38,11 @@ const MainContainer = styled.button<{ variant?: string }>`
   ${(props) =>
     props.variant === "warn" &&
     `
-    background-color: ${props.theme.primaryButton};
+    background-color: ${props.theme.warnButton};
     color: ${props.theme.textColorWhite};
 
     &:hover {
-    background-color: ${props.theme.primaryButtonHover};
+    background-color: ${props.theme.warnButtonHover};
   }
   `};
 `;
