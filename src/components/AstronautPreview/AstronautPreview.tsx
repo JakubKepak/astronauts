@@ -1,4 +1,5 @@
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
 import * as S from "./Styles";
 
 interface Props {
@@ -6,6 +7,8 @@ interface Props {
   surname?: string;
   birthDate?: string;
   superpower?: string;
+  deleteItem: any;
+  id: string;
 }
 
 export default function AstronautPreview({
@@ -13,11 +16,18 @@ export default function AstronautPreview({
   surname,
   birthDate,
   superpower,
+  deleteItem,
+  id,
 }: Props) {
   return (
     <S.MainComponent>
       {name}
-      <S.TrashBinIcon icon={faTrashAlt} />
+      <S.TrashBinIcon
+        onClick={() => {
+          deleteItem(id);
+        }}
+        icon={faTrashAlt}
+      />
     </S.MainComponent>
   );
 }

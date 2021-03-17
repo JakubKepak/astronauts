@@ -6,16 +6,39 @@ import { db } from "../../firebase";
 import AstronautPreview from "../AstronautPreview/AstronautPreview";
 
 export default function MainPage() {
-  const [data, status, error] = useFetch(db.collection("astronauts"));
+  const [data, status, error, saveItem, deleteItem] = useFetch(
+    db.collection("astronauts")
+  );
 
   return (
     <S.MainContainer>
       <S.AstronautsContainer>
+        {status !== "saving" ? (
+          <button
+            onClick={() =>
+              saveItem({
+                name: "Jarda",
+                surname: "Button",
+                birthDate: "23/1/1990",
+                superpower: "Cat",
+              })
+            }
+          >
+            Add
+          </button>
+        ) : (
+          <div>Saving</div>
+        )}
         {status === "success" &&
           data.length > 0 &&
           data.map((astronaut: any) => {
             return (
-              <AstronautPreview key={astronaut.id} name={astronaut.name} />
+              <AstronautPreview
+                id={astronaut.id}
+                deleteItem={deleteItem}
+                key={astronaut.id}
+                name={astronaut.name}
+              />
             );
           })}
       </S.AstronautsContainer>

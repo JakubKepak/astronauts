@@ -11,6 +11,7 @@ export const MainComponent = styled.div`
 
   &:hover {
     border: 1px solid #7c5dfa;
+    margin-top: -2px;
   }
 `;
 

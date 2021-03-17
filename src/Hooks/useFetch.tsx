@@ -7,6 +7,12 @@ const reducer = (state: any, action: any) => {
       return { status: "idle", data: undefined, error: undefined };
     case "loading":
       return { status: "loading", data: undefined, error: undefined };
+    case "saving":
+      return { status: "saving", data: state.data, error: undefined };
+    case "saved":
+      return { status: "success", data: state.data, error: undefined };
+    case "deleted":
+      return { status: "success", data: state.data, error: undefined };
     case "success":
       return { status: "success", data: action.payload, error: undefined };
     case "error":
@@ -26,9 +32,7 @@ export default function useFetch(query: any) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    dispatch({
-      type: "loading",
-    });
+    dispatch({ type: "loading" });
 
     return query.onSnapshot(
       (response: any) => {
@@ -44,7 +48,36 @@ export default function useFetch(query: any) {
     );
   }, []);
 
-  return [state.data, state.status, state.error];
+  interface Payload {
+    name: string;
+    surname: string;
+    birthDate: any;
+    superpower: string;
+  }
+
+  const saveItem = async (payload: Payload) => {
+    dispatch({ type: "saving" });
+
+    try {
+      const res = await query.add(payload);
+      console.log(res.id);
+      dispatch({ type: "saved" });
+    } catch (err) {
+      console.error(err);
+      dispatch({ type: "error", payload: err });
+    }
+  };
+
+  const deleteItem = async (docId: any) => {
+    try {
+      await query.doc(docId).delete();
+      dispatch({ type: "deleted" });
+    } catch (err) {
+      dispatch({ type: "error", payload: err });
+    }
+  };
+
+  return [state.data, state.status, state.error, saveItem, deleteItem];
 }
 
 // Get doc data and merge doc.id
