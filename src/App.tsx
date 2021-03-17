@@ -1,25 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+import MainPage from "./components/MainPage/MainPage";
+
+import { LightTheme, DarkTheme } from "./themes";
+
+const GlobalStyle = createGlobalStyle`
+
+  html {
+    /* font sizes */
+    --fontSizeSmall: .8rem;
+    --fontSizeMedium: 1rem;
+    --fontSizeLarge: 1.2rem;
+    --fontSizeXXL: 1.5rem;
+
+    /* misc */
+    --borderRadius: 5px;
+  }
+
+  *,
+  *:before, 
+  *:after {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+  }
+
+*:focus {
+  outline: none;
+}
+
+a, 
+a:active, 
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+  
+  body {
+  background-color: ${({ theme }) => theme.mainBackground};
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={LightTheme}>
+        <GlobalStyle />
+        <NavigationBar />
+        <MainPage />
+      </ThemeProvider>
+    </Router>
   );
 }
 
