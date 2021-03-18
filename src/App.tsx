@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import styled, {
+import { useState } from "react";
+import {
   ThemeProvider,
   DefaultTheme,
   createGlobalStyle,
 } from "styled-components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import MainPage from "./components/MainPage/MainPage";
@@ -60,13 +59,11 @@ function App() {
   };
 
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <NavigationBar toggleThemes={toggleThemes} />
-        <MainPage />
-      </ThemeProvider>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <NavigationBar toggleThemes={toggleThemes} />
+      <MainPage />
+    </ThemeProvider>
   );
 }
 

@@ -2,9 +2,8 @@ import * as S from "./Styles";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchBar({ setSearchKeyword }: any) {
-  const setSearchKeywordHandler = (e: any) => {
+  const setSearchKeywordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(e.target.value);
-    console.log(e.target.value);
   };
 
   return (

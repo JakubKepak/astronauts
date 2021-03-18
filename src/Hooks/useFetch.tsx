@@ -1,7 +1,15 @@
 import { useEffect, useReducer } from "react";
 
-// TODO: types at reducer
-const reducer = (state: any, action: any) => {
+type Action =
+  | { type: "idle" }
+  | { type: "loading" }
+  | { type: "saving" }
+  | { type: "saved" }
+  | { type: "deleted" }
+  | { type: "success"; payload: any }
+  | { type: "error"; payload: any };
+
+const reducer = (state: any, action: Action) => {
   switch (action.type) {
     case "idle":
       return { status: "idle", data: undefined, error: undefined };
@@ -31,6 +39,7 @@ export default function useFetch(query: any) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Subscribe to onSnapshot. On component unmountedf it will unsubscribe
   useEffect(() => {
     dispatch({ type: "loading" });
 
@@ -71,7 +80,7 @@ export default function useFetch(query: any) {
     }
   };
 
-  const deleteItem = async (docId: any) => {
+  const deleteItem = async (docId: string) => {
     try {
       await query.doc(docId).delete();
       dispatch({ type: "deleted" });
@@ -80,7 +89,7 @@ export default function useFetch(query: any) {
     }
   };
 
-  const editItem = async (docId: any, payload: Payload) => {
+  const editItem = async (docId: string, payload: Payload) => {
     try {
       await query
         .doc(docId)

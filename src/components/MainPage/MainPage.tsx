@@ -97,6 +97,7 @@ export default function MainPage() {
         {filteredData && filteredData.length === 0 && (
           <div>Tady nikdo neni</div>
         )}
+        {error && <div>Něco je špatně</div>}
       </S.AstronautsContainer>
     </S.MainContainer>
   );

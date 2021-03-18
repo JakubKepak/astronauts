@@ -3,12 +3,15 @@ import * as S from "./Styles";
 import { faCloudSun, faCloudMoon } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/dog.svg";
 
-export default function NavigationBar({ toggleThemes }: any) {
+interface Props {
+  toggleThemes: (isDarkTheme: boolean) => void;
+}
+
+export default function NavigationBar({ toggleThemes }: Props) {
   return (
     <S.MainContainer>
       <S.InnerContainer>
         <S.Logo src={logo} />
-
         <S.ToggleThemeContainer>
           <S.ToggleThemeContainerInner>
             <S.ToggleThemeIcon icon={faCloudSun} />
