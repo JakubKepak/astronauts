@@ -15,5 +15,6 @@ declare module "styled-components" {
     warnButton: string;
     warnButtonHover: string;
     textColorWarn: string;
+    textColorDarkLight: string;
   }
 }

@@ -28,5 +28,5 @@ export const OptionBarContainer = styled.div`
   width: 60%;
   min-width: 350px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;

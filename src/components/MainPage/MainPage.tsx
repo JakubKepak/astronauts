@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "../../Hooks/useFetch";
 import * as S from "./Styles";
 
@@ -6,13 +6,28 @@ import { db } from "../../firebase";
 
 import AstronautPreview from "../AstronautPreview/AstronautPreview";
 import EditAstronaut from "../EditAstronaut/EditAstronaut";
+import SearchBar from "../SearchBar/SearchBar";
 import Button from "../UI/Button";
 
 export default function MainPage() {
   const [createDialogActive, setCreateDialogActive] = useState<boolean>(false);
+  const [filteredData, setFilteredData] = useState<any>([]);
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
   const [data, status, error, saveItem, deleteItem, editItem] = useFetch(
     db.collection("astronauts")
   );
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  useEffect(() => {
+    data &&
+      setFilteredData(
+        data.filter((astronaut: any) => astronaut.name.includes(searchKeyword))
+      );
+    console.log(searchKeyword);
+  }, [searchKeyword, data]);
 
   return (
     <S.MainContainer>
@@ -25,6 +40,7 @@ export default function MainPage() {
       )}
 
       <S.OptionBarContainer>
+        <SearchBar setSearchKeyword={setSearchKeyword} />
         {status !== "saving" ? (
           <Button
             type="button"
@@ -45,9 +61,8 @@ export default function MainPage() {
           <span>Date of birth</span>
           <span>Superpower</span>
         </S.AstronautsLabelContainer>
-        {status === "success" &&
-          data.length > 0 &&
-          data.map((astronaut: any) => {
+        {filteredData && status === "success" && filteredData.length > 0 ? (
+          filteredData.map((astronaut: any) => {
             return (
               <AstronautPreview
                 id={astronaut.id}
@@ -60,7 +75,10 @@ export default function MainPage() {
                 superpower={astronaut.superpower}
               />
             );
-          })}
+          })
+        ) : (
+          <div>Loading</div>
+        )}
       </S.AstronautsContainer>
     </S.MainContainer>
   );
