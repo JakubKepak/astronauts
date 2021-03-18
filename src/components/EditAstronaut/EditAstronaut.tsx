@@ -87,6 +87,7 @@ export default function EditAstronaut({
             if (variant === "edit") {
               actions.setSubmitting(false);
               saveItem(id, values);
+              setEditDialogActive(false);
             }
           }}
         >
