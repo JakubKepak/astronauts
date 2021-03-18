@@ -4,22 +4,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const MainContainer = styled.div`
   display: flex;
-`;
-
-export const InnerContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
   padding: 1rem;
   width: 100%;
   min-width: 300px;
   border-radius: 5px;
   box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
   background-color: ${({ theme }) => theme.secondBackground};
+  color: ${({ theme }) => theme.textColorPrimary};
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.primaryButton};
     margin-top: -2px;
   }
+`;
+
+export const InnerContainer = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 25%);
 
   @media ${device.sm} {
     grid-template-columns: 1fr;
@@ -41,15 +43,26 @@ export const FieldLabel = styled.span`
 `;
 
 export const OptionButtonContainer = styled.div`
+  right: 5px;
+  top: 5px;
   display: flex;
-  flex-direction: column;
+  opacity: 0;
   margin-left: 0.2rem;
+  transition: all 0.2s;
+
+  ${MainContainer}:hover & {
+    opacity: 1;
+  }
+
+  @media ${device.sm} {
+    opacity: 1;
+  }
 `;
 
 export const TrashBinIcon = styled(FontAwesomeIcon)`
-  margin: 0.5rem 0;
   color: ${({ theme }) => theme.textColorLight};
   transition: all 0.2s;
+  margin-left: 0.3rem;
 
   &:hover {
     cursor: pointer;

@@ -18,9 +18,9 @@ export const LightTheme: DefaultTheme = {
 };
 
 export const DarkTheme: DefaultTheme = {
-  mainBackground: "#F2F2F2",
-  secondBackground: "#ffffff",
-  textColorPrimary: "black",
+  mainBackground: "#2b2b2b",
+  secondBackground: "#474747",
+  textColorPrimary: "#DFE3FA",
   textColorLight: "#DFE3FA",
   textColorDarkLight: "#c4c4c4",
   textColorWhite: "#ffffff",

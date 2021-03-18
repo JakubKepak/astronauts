@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import styled, {
+  ThemeProvider,
+  DefaultTheme,
+  createGlobalStyle,
+} from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavigationBar from "./components/NavigationBar/NavigationBar";
@@ -48,11 +52,18 @@ a:visited {
 `;
 
 function App() {
+  const [theme, setTheme] = useState<DefaultTheme>(LightTheme);
+
+  // toggle based on whether a toggle button is checked or not
+  const toggleThemes = (isDarkTheme: boolean): void => {
+    isDarkTheme ? setTheme(DarkTheme) : setTheme(LightTheme);
+  };
+
   return (
     <Router>
-      <ThemeProvider theme={LightTheme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <NavigationBar />
+        <NavigationBar toggleThemes={toggleThemes} />
         <MainPage />
       </ThemeProvider>
     </Router>
