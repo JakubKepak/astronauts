@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import * as S from "./Styles";
@@ -48,6 +49,20 @@ export default function EditAstronaut({
   saveItem,
   id = "",
 }: Props) {
+  const closeOnEscape = (e: any) => {
+    if (e.key === "Escape") {
+      setEditDialogActive(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => closeOnEscape(e));
+
+    return () => {
+      window.removeEventListener("keydown", (e) => closeOnEscape(e));
+    };
+  }, []);
+
   return (
     <S.MainContainer>
       <S.DialogContainer>

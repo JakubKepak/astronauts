@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../breakpoints";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const MainContainer = styled.div`
@@ -19,17 +20,34 @@ export const InnerContainer = styled.div`
     border: 1px solid ${({ theme }) => theme.primaryButton};
     margin-top: -2px;
   }
+
+  @media ${device.sm} {
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    grid-auto-flow: row;
+  }
+`;
+
+export const FieldContainer = styled.div``;
+
+export const FieldLabel = styled.span`
+  color: ${({ theme }) => theme.textColorDarkLight};
+  font-size: var(--fontSizeSmall);
+  display: none;
+
+  @media ${device.sm} {
+    display: block;
+  }
 `;
 
 export const OptionButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0.2rem 0;
   margin-left: 0.2rem;
 `;
 
 export const TrashBinIcon = styled(FontAwesomeIcon)`
+  margin: 0.5rem 0;
   color: ${({ theme }) => theme.textColorLight};
   transition: all 0.2s;
 

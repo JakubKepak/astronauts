@@ -34,7 +34,7 @@ export default function useFetch(query: any) {
   useEffect(() => {
     dispatch({ type: "loading" });
 
-    return query.onSnapshot(
+    return query.orderBy("dateCreated", "desc").onSnapshot(
       (response: any) => {
         const data = response.docs
           ? getCollectionData(response)

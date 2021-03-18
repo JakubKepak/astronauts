@@ -44,6 +44,7 @@ a:visited {
   background-color: ${({ theme }) => theme.mainBackground};
   font-family: 'Montserrat', sans-serif;
   }
+
 `;
 
 function App() {

@@ -7,11 +7,12 @@ import { db } from "../../firebase";
 import AstronautPreview from "../AstronautPreview/AstronautPreview";
 import EditAstronaut from "../EditAstronaut/EditAstronaut";
 import SearchBar from "../SearchBar/SearchBar";
+import Loader from "../UI/Loader";
 import Button from "../UI/Button";
 
 export default function MainPage() {
   const [createDialogActive, setCreateDialogActive] = useState<boolean>(false);
-  const [filteredData, setFilteredData] = useState<any>([]);
+  const [filteredData, setFilteredData] = useState<any>(undefined);
   const [searchKeyword, setSearchKeyword] = useState<string>("");
   const [data, status, error, saveItem, deleteItem, editItem] = useFetch(
     db.collection("astronauts")
@@ -24,7 +25,21 @@ export default function MainPage() {
   useEffect(() => {
     data &&
       setFilteredData(
-        data.filter((astronaut: any) => astronaut.name.includes(searchKeyword))
+        data.filter(
+          (astronaut: any) =>
+            astronaut.name
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase()) ||
+            astronaut.surname
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase()) ||
+            astronaut.superpower
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase()) ||
+            astronaut.birthDate
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase())
+        )
       );
     console.log(searchKeyword);
   }, [searchKeyword, data]);
@@ -61,7 +76,7 @@ export default function MainPage() {
           <span>Date of birth</span>
           <span>Superpower</span>
         </S.AstronautsLabelContainer>
-        {filteredData && status === "success" && filteredData.length > 0 ? (
+        {filteredData && status === "success" ? (
           filteredData.map((astronaut: any) => {
             return (
               <AstronautPreview
@@ -77,7 +92,10 @@ export default function MainPage() {
             );
           })
         ) : (
-          <div>Loading</div>
+          <Loader />
+        )}
+        {filteredData && filteredData.length === 0 && (
+          <div>Tady nikdo neni</div>
         )}
       </S.AstronautsContainer>
     </S.MainContainer>

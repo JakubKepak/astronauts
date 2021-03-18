@@ -31,10 +31,22 @@ export default function AstronautPreview({
   return (
     <S.MainContainer>
       <S.InnerContainer>
-        <span>{name}</span>
-        <span>{surname}</span>
-        <span>{birthDate}</span>
-        <span>{superpower}</span>
+        <S.FieldContainer>
+          <S.FieldLabel>Name</S.FieldLabel>
+          <span>{name}</span>
+        </S.FieldContainer>
+        <S.FieldContainer>
+          <S.FieldLabel>Surname</S.FieldLabel>
+          <span>{surname}</span>
+        </S.FieldContainer>
+        <S.FieldContainer>
+          <S.FieldLabel>Date of birth</S.FieldLabel>
+          <span>{birthDate}</span>
+        </S.FieldContainer>
+        <S.FieldContainer>
+          <S.FieldLabel>Superpower</S.FieldLabel>
+          <span>{superpower}</span>
+        </S.FieldContainer>
       </S.InnerContainer>
       <S.OptionButtonContainer>
         <S.EditIcon onClick={() => setEditDialogActive(true)} icon={faEdit} />
