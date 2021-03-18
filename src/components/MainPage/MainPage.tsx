@@ -71,10 +71,10 @@ export default function MainPage() {
 
       <S.AstronautsContainer>
         <S.AstronautsLabelContainer>
-          <span>Name</span>
-          <span>Surname</span>
-          <span>Date of birth</span>
-          <span>Superpower</span>
+          <span>Jméno</span>
+          <span>Přijmení</span>
+          <span>Datum narození</span>
+          <span>Superschopnost</span>
         </S.AstronautsLabelContainer>
         {filteredData && status === "success" ? (
           filteredData.map((astronaut: any) => {

@@ -11,7 +11,7 @@ export default function SearchBar({ setSearchKeyword }: any) {
     <S.MainContainer>
       <S.SearchIcon icon={faSearch} />
       <S.InputField
-        placeholder="Start searching..."
+        placeholder="Tik tak. Začni hledat..."
         onChange={(e) => setSearchKeywordHandler(e)}
       />
     </S.MainContainer>

@@ -9,6 +9,7 @@ declare module "styled-components" {
     warningColor: string;
     primaryButton: string;
     textColorWhite: string;
+    buttonTextDark: string;
     primaryButtonHover: string;
     secondaryButton: string;
     secondaryButtonHover: string;

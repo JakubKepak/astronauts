@@ -21,7 +21,9 @@ export const MainContainer = styled.div`
 export const InnerContainer = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5rem;
+  word-break: break-all;
 
   @media ${device.sm} {
     grid-template-columns: 1fr;
@@ -46,17 +48,7 @@ export const OptionButtonContainer = styled.div`
   right: 5px;
   top: 5px;
   display: flex;
-  opacity: 0;
   margin-left: 0.2rem;
-  transition: all 0.2s;
-
-  ${MainContainer}:hover & {
-    opacity: 1;
-  }
-
-  @media ${device.sm} {
-    opacity: 1;
-  }
 `;
 
 export const TrashBinIcon = styled(FontAwesomeIcon)`
@@ -76,6 +68,6 @@ export const EditIcon = styled(FontAwesomeIcon)`
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.textColorPrimary};
+    color: ${({ theme }) => theme.primaryButton};
   }
 `;

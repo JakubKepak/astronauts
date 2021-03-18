@@ -10,6 +10,7 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
+  color: ${({ theme }) => theme.textColorPrimary};
 `;
 
 export const DialogContainer = styled.div`
@@ -50,8 +51,10 @@ export const ErrorMessage = styled.span`
 export const Label = styled.label``;
 
 export const InputField = styled.input`
+  color: inherit;
   padding: 0.5rem;
   min-width: 250px;
   border: 1px solid ${({ theme }) => theme.textColorLight};
+  background: none;
   font-family: inherit;
 `;

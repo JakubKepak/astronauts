@@ -22,10 +22,10 @@ const CustomTextField = ({ label, ...props }: any) => {
 };
 
 const EditSchema = Yup.object().shape({
-  name: Yup.string().required("Required"),
-  surname: Yup.string().required("Required"),
-  birthDate: Yup.string().required("Required"),
-  superpower: Yup.string().required("Required"),
+  name: Yup.string().max(30, "Max 30 znaků...").required("Povinné"),
+  surname: Yup.string().max(60, "Max 60 znaků...").required("Povinné"),
+  birthDate: Yup.string().required("Povinné"),
+  superpower: Yup.string().max(60, "Max 60 znaků...").required("Povinné"),
 });
 
 interface Props {
@@ -67,8 +67,8 @@ export default function EditAstronaut({
     <S.MainContainer>
       <S.DialogContainer>
         <S.DialogHeader>
-          {variant === "new" && <span>Add a new Astronaut</span>}
-          {variant === "edit" && <span>Edit Astronaut</span>}
+          {variant === "new" && <span>Přidej astronauta</span>}
+          {variant === "edit" && <span>Uprav astronauta</span>}
         </S.DialogHeader>
         <Formik
           initialValues={{
@@ -80,12 +80,11 @@ export default function EditAstronaut({
           validationSchema={EditSchema}
           onSubmit={(values, actions) => {
             if (variant === "new") {
-              alert(`creating - ${JSON.stringify(values, null, 2)}`);
               actions.setSubmitting(false);
               saveItem(values);
+              actions.resetForm();
             }
             if (variant === "edit") {
-              alert(`editing - ${JSON.stringify(values, null, 2)}`);
               actions.setSubmitting(false);
               saveItem(id, values);
             }
@@ -97,28 +96,28 @@ export default function EditAstronaut({
                 id="name"
                 name="name"
                 type="text"
-                label="Name"
+                label="Jméno"
                 value={props.values.name}
               />
               <CustomTextField
                 id="surname"
                 name="surname"
                 type="text"
-                label="Surname"
+                label="Příjmení"
                 value={props.values.surname}
               />
               <CustomTextField
                 id="birthDate"
                 name="birthDate"
                 type="date"
-                label="birthDate"
+                label="Datum narození"
                 value={props.values.birthDate}
               />
               <CustomTextField
                 id="superpower"
                 name="superpower"
                 type="text"
-                label="superpower"
+                label="superschopnost"
                 value={props.values.superpower}
               />
               <S.ButtonsContainer>
@@ -127,10 +126,10 @@ export default function EditAstronaut({
                   variant="secondary"
                   onClick={() => setEditDialogActive(false)}
                 >
-                  Drop it
+                  Chci jít pryč.
                 </Button>
                 <Button type="submit" variant="primary">
-                  Save & Close
+                  Ulož to
                 </Button>
               </S.ButtonsContainer>
             </Form>

@@ -22,7 +22,7 @@ export default function DeleteModal({ onClick, setDeleteModalActive }: any) {
     <S.MainContainer>
       <S.DialogContainer>
         <S.MessageContainer>
-          <span>Eeesy! Are you sure?</span>
+          <span>Whhoa! Jsi si jistý?</span>
         </S.MessageContainer>
         <S.ButtonsContainer>
           <Button
@@ -30,10 +30,10 @@ export default function DeleteModal({ onClick, setDeleteModalActive }: any) {
             variant="secondary"
             onClick={() => setDeleteModalActive(false)}
           >
-            Naah
+            Nejsem
           </Button>
           <Button type="button" variant="warn" onClick={onClick}>
-            Delete
+            Smaž to.
           </Button>
         </S.ButtonsContainer>
       </S.DialogContainer>

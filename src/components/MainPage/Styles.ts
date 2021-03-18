@@ -22,6 +22,7 @@ export const AstronautsContainer = styled.div`
 `;
 
 export const AstronautsLabelContainer = styled.div`
+  color: ${({ theme }) => theme.textColorPrimary};
   width: 97%;
   padding: 0 1rem;
   display: grid;

@@ -32,19 +32,19 @@ export default function AstronautPreview({
     <S.MainContainer>
       <S.InnerContainer>
         <S.FieldContainer>
-          <S.FieldLabel>Name</S.FieldLabel>
+          <S.FieldLabel>Jméno</S.FieldLabel>
           <span>{name}</span>
         </S.FieldContainer>
         <S.FieldContainer>
-          <S.FieldLabel>Surname</S.FieldLabel>
+          <S.FieldLabel>Příjmení</S.FieldLabel>
           <span>{surname}</span>
         </S.FieldContainer>
         <S.FieldContainer>
-          <S.FieldLabel>Date of birth</S.FieldLabel>
+          <S.FieldLabel>Datum narození</S.FieldLabel>
           <span>{birthDate}</span>
         </S.FieldContainer>
         <S.FieldContainer>
-          <S.FieldLabel>Superpower</S.FieldLabel>
+          <S.FieldLabel>Superschopnost</S.FieldLabel>
           <span>{superpower}</span>
         </S.FieldContainer>
       </S.InnerContainer>

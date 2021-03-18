@@ -31,6 +31,7 @@ export const ToggleThemeContainerInner = styled.div`
 `;
 
 export const ToggleThemeIcon = styled(FontAwesomeIcon)`
+  color: ${({ theme }) => theme.textColorPrimary};
   width: 15px;
   height: 15px;
 `;

@@ -28,7 +28,7 @@ const MainContainer = styled.button<{ variant?: string }>`
     props.variant === "secondary" &&
     `
     background-color: ${props.theme.secondaryButton};
-    color: ${props.theme.textColorPrimary};
+    color: ${props.theme.buttonTextDark};
 
     &:hover {
     background-color: ${props.theme.secondaryButtonHover};
