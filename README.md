@@ -3,6 +3,8 @@
 Simple app for evidence of astronauts. You can Add, Edit, Create, Delete, Search astronauts and toggle between themes if you're a hipster and you cant't work without mechanical keyboard and dark theme.
 
 
+Demo: https://eloquent-goldstine-9ef375.netlify.app/
+
 
 ## Built with this awesome stack:   
 - [React](https://reactjs.org/)
@@ -11,6 +13,7 @@ Simple app for evidence of astronauts. You can Add, Edit, Create, Delete, Search
 - [Formik](https://formik.org/) + [Yup](https://www.npmjs.com/package/yup)
 - [Fontawesome](https://fontawesome.com/)
 - Typescript
+- Deployed with [Netlify](https://www.netlify.com/)
 
 
 ## How to run the project locally:
