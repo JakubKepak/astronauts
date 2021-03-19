@@ -21,4 +21,5 @@ export const InputField = styled.input`
   border: none;
   background: none;
   font-family: inherit;
+  color: ${({ theme }) => theme.textColorPrimary};
 `;

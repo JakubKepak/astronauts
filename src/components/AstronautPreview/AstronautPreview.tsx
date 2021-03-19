@@ -50,18 +50,6 @@ export default function AstronautPreview({
       </S.InnerContainer>
       <S.OptionButtonContainer>
         <S.EditIcon onClick={() => setEditDialogActive(true)} icon={faEdit} />
-        {editDialogActive && (
-          <EditAstronaut
-            setEditDialogActive={setEditDialogActive}
-            name={name}
-            surname={surname}
-            birthDate={birthDate}
-            superpower={superpower}
-            saveItem={editItem}
-            variant="edit"
-            id={id}
-          />
-        )}
         <S.TrashBinIcon
           onClick={() => {
             setDeleteModalActive(true);
@@ -73,6 +61,18 @@ export default function AstronautPreview({
         <DeleteModal
           setDeleteModalActive={setDeleteModalActive}
           onClick={() => deleteItem(id)}
+        />
+      )}
+      {editDialogActive && (
+        <EditAstronaut
+          setEditDialogActive={setEditDialogActive}
+          name={name}
+          surname={surname}
+          birthDate={birthDate}
+          superpower={superpower}
+          saveItem={editItem}
+          variant="edit"
+          id={id}
         />
       )}
     </S.MainContainer>

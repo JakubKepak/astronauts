@@ -10,6 +10,12 @@ export const MainContainer = styled.div`
   align-items: center;
 `;
 
+export const Header = styled.div`
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.textColorPrimary};
+`;
+
 export const AstronautsContainer = styled.div`
   width: 90%;
   min-width: 350px;
@@ -27,6 +33,8 @@ export const AstronautsLabelContainer = styled.div`
   padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(4, 25%);
+  font-size: var(--fontSizeSmall);
+  color: ${({ theme }) => theme.textColorDarkLight};
 
   @media ${device.sm} {
     display: none;

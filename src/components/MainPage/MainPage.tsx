@@ -41,7 +41,6 @@ export default function MainPage() {
               .includes(searchKeyword.toLowerCase())
         )
       );
-    console.log(searchKeyword);
   }, [searchKeyword, data]);
 
   return (
@@ -54,6 +53,8 @@ export default function MainPage() {
         />
       )}
 
+      <S.Header>Evidence Astronautů</S.Header>
+
       <S.OptionBarContainer>
         <SearchBar setSearchKeyword={setSearchKeyword} />
         {status !== "saving" ? (
@@ -62,7 +63,7 @@ export default function MainPage() {
             variant="primary"
             onClick={() => setCreateDialogActive(true)}
           >
-            Add
+            Přidej
           </Button>
         ) : (
           <div>Saving</div>
