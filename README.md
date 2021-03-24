@@ -11,6 +11,7 @@ Demo: https://eloquent-goldstine-9ef375.netlify.app/
 - [Create React App](https://create-react-app.dev/)   
 - [Firebase](https://firebase.google.com/)
 - [Formik](https://formik.org/) + [Yup](https://www.npmjs.com/package/yup)
+- [Styled Components](https://styled-components.com/)
 - [Fontawesome](https://fontawesome.com/)
 - Typescript
 - Deployed with [Netlify](https://www.netlify.com/)
